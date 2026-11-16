@@ -1,0 +1,31 @@
+# 合并片段，不能作为完整订阅导入。
+# 合并 rule-providers；将这里三条 rules 放到现有 rules 最前面。
+# 保留现有节点、策略组、其他规则和末尾 MATCH。
+rule-providers:
+  craig-adblock-allow:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/Craigfu616/proxy-adblock-config/main/rules/allow.list
+    path: ./rule-providers/craig-adblock-allow.list
+    interval: 86400
+  craig-adblock-custom:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/Craigfu616/proxy-adblock-config/main/rules/block.list
+    path: ./rule-providers/craig-adblock-custom.list
+    interval: 86400
+  craig-adblock-awa:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash-Only.Ads.yaml
+    path: ./rule-providers/craig-adblock-awa.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,craig-adblock-allow,DIRECT
+  - RULE-SET,craig-adblock-custom,REJECT
+  - RULE-SET,craig-adblock-awa,REJECT
+

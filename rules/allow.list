@@ -1,0 +1,6 @@
+# 精确放行；优先于广告拦截。DIRECT 表示该域名直连。
+# 仅填写规则类型和域名，不要在此添加 DIRECT / PROXY。
+# 示例：DOMAIN,api.example.com
+# 下列保留域名用于验证白名单优先级，不涉及真实网站。
+DOMAIN,allow.adblock-test.invalid
+

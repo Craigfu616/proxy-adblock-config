@@ -1,0 +1,6 @@
+# 自定义广告拦截；上游广告域名由秋风广告规则维护。
+# 格式：DOMAIN,精确域名 或 DOMAIN-SUFFIX,域名及其子域名
+# 不要添加网址、路径、密码或节点信息。
+# 下列保留域名用于验证拦截，不涉及真实网站。
+DOMAIN-SUFFIX,adblock-test.invalid
+

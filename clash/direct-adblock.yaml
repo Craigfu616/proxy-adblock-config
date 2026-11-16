@@ -1,0 +1,39 @@
+# Mihomo / Clash Meta 完整配置：所有普通连接直连，无代理节点。
+# Clash Verge Rev 可以导入此文件；使用 Rule 模式。
+# 系统代理仅覆盖遵循系统代理设置的应用；需要更广覆盖时由客户端开启 TUN。
+mixed-port: 7890
+allow-lan: false
+bind-address: 127.0.0.1
+mode: rule
+log-level: info
+ipv6: true
+
+rule-providers:
+  craig-adblock-allow:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/Craigfu616/proxy-adblock-config/main/rules/allow.list
+    path: ./rule-providers/craig-adblock-allow.list
+    interval: 86400
+  craig-adblock-custom:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/Craigfu616/proxy-adblock-config/main/rules/block.list
+    path: ./rule-providers/craig-adblock-custom.list
+    interval: 86400
+  craig-adblock-awa:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash-Only.Ads.yaml
+    path: ./rule-providers/craig-adblock-awa.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,craig-adblock-allow,DIRECT
+  - RULE-SET,craig-adblock-custom,REJECT
+  - RULE-SET,craig-adblock-awa,REJECT
+  - MATCH,DIRECT
+
