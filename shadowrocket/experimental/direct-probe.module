@@ -1,0 +1,6 @@
+#!name=直连节点验证（临时）
+#!desc=仅让 api.ipify.org 使用首页当前节点，以检验实验 direct 节点；测试后停用。广告模块保持启用。
+
+[Rule]
+DOMAIN,api.ipify.org,PROXY
+

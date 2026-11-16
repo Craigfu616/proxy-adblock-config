@@ -1,0 +1,8 @@
+# 实验订阅：Shadowrocket 首页 Subscribe 的 direct 类型兼容性待实测。
+# 仅含节点，不含配置规则；不要在「配置」页面作为主配置导入。
+# 不是已经验证可用的 Shadowrocket 产品；导入失败不应换成无效 SOCKS 节点。
+proxies:
+  - name: 广告屏蔽
+    type: direct
+    udp: true
+
