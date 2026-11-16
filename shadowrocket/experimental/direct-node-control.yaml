@@ -1,0 +1,12 @@
+# 仅用于区分 Shadowrocket 订阅下载/解析故障与 direct 类型不被识别。
+# 对照条目是无服务的本地 SOCKS5，不能当直连节点，禁止选中或连接。
+# 只添加首页订阅并查看出现哪些条目，不替换主配置，不改变当前节点。
+proxies:
+  - name: 导入对照-不要连接
+    type: socks5
+    server: 127.0.0.1
+    port: 9
+  - name: 广告屏蔽
+    type: direct
+    udp: true
+

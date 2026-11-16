@@ -1,4 +1,5 @@
-# 实验订阅：Shadowrocket 首页 Subscribe 的 direct 类型兼容性待实测。
+# 研究留档：Shadowrocket 首轮用户导入测试未通过，暂不推荐使用。
+# 2.2.93（3488）提示「不能获取节点」，Safari 可读；同订阅导入对照待验证。
 # 仅含节点，不含配置规则；不要在「配置」页面作为主配置导入。
 # 不是已经验证可用的 Shadowrocket 产品；导入失败不应换成无效 SOCKS 节点。
 proxies:

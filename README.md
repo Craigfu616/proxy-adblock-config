@@ -4,7 +4,7 @@
 
 **已经在用代理商配置的手机，优先使用附加模块 / 规则，见[手机模块与真正直连入口](docs/mobile-addons.md)。** Shadowrocket 的[广告模块](shadowrocket/adblock.module)可叠加到原配置；Android Mihomo 的[直连节点订阅](clash/direct-node-provider.yaml)使用真正的 `direct` 出站。两者的节点导入方式不能混为一谈。
 
-Shadowrocket 的首页直连节点订阅正在验证，已提供[有源码依据的实验订阅与测试说明](docs/shadowrocket-direct-research.md)，目前不作为已验证可用的节点发布。
+Shadowrocket 的首页直连节点实验订阅，首轮用户测试未通过，暂不推荐使用；详见[研究与测试记录](docs/shadowrocket-direct-research.md)。当前没有标记为可用的 Shadowrocket 首页直连节点订阅。
 
 **连接开关开启，不代表所有流量都会经过代理服务器。** 开关让流量进入客户端，由规则选择 `REJECT`（拦截）、`DIRECT`（直连）或已有代理。关键是使用**配置 / Rule 模式**，把广告拦截放在普通分流规则之前。
 

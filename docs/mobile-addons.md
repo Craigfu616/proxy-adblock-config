@@ -18,13 +18,13 @@ https://raw.githubusercontent.com/Craigfu616/proxy-adblock-config/main/shadowroc
 
 ## Shadowrocket：直连入口的当前限制
 
-已查阅的 Shadowrocket 手册明确支持 `DIRECT` 策略及含 `DIRECT` 的代理分组。进一步核查 Sub-Store 源码发现了可测试的 YAML `type: direct` 导出路径，目前提供[最小实验订阅及验收步骤](shadowrocket-direct-research.md)，但尚无 Shadowrocket 实际导入和出站结果，不能标为已支持。
+已查阅的 Shadowrocket 手册明确支持 `DIRECT` 策略及含 `DIRECT` 的代理分组。进一步核查 Sub-Store 源码后制作的 YAML `type: direct` 候选订阅，在用户的 2.2.93（3488）上提示“不能获取节点”，Safari 可读原文本，目前暂不推荐使用。正在用同订阅的已知格式对照区分下载与类型识别，详情见[研究与测试记录](shadowrocket-direct-research.md)，不能标为已支持。
 
 `127.0.0.1:9` 是无效代理，不是真正直连节点。原配置命中 `PROXY` 时，选择它会尝试连接本机该端口并失败，不会自动变成 `DIRECT`。之前提到的占位方式，只适用于所有普通请求已经由独立配置设置为 `DIRECT` 的情况；它不能完成上述保持原配置的切换目标。
 
 在 Shadowrocket 中可以使用已支持的 `DIRECT` 策略切换，但需要正确接入原配置实际使用的策略组。如果原配置直接指定了其他节点或独立分组，它们不会因为首页换了节点而自动跟随。没有检查代理商配置的规则和分组之前，不能保证增加一个入口就能接管全部代理请求。
 
-如果要求严格保持「仅在首页点节点、不切换策略、不替换原配置」的交互，目前需要先验证[实验订阅](../shadowrocket/experimental/direct-node.yaml)，再检查原配置的路径是否跟随首页节点；不能标记为已完成。无需提供节点密码；进一步适配需要的是原配置的规则和策略组结构。
+如果要求严格保持「仅在首页点节点、不切换策略、不替换原配置」的交互，目前尚无已验证的 Shadowrocket 方案。当前需要先确认失败发生在下载还是解析阶段；若后续取得可用直连节点，还要检查原配置的路径是否跟随首页选择。无需提供节点密码。
 
 ## Android Clash Meta / Mihomo：真正的直连节点订阅
 
