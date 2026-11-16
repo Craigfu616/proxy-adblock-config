@@ -35,3 +35,7 @@
 - 各 App 的去广告覆盖率、误拦截率，以及上游未来更新的影响。
 
 本记录证明当前配置在上述环境中的路由行为；不代表全部手机广告都能去除。
+
+## 同日补充：Shadowrocket 的节点选择与 DNS
+
+直连版显式设置系统 DNS、`dns-direct-fallback-proxy = false` 和 `private-ip-answer = true`，并补充了选中节点与 `PROXY` 策略之间的关系，以及可选的本地占位节点说明。参数依据 Shadowrocket 使用手册和配置维护者的示例核对；已检查配置文本。此补充仍未在 iPhone 上实测。
