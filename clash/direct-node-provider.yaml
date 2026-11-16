@@ -1,0 +1,9 @@
+# Mihomo / Clash Meta 的 proxy-provider 节点订阅。
+# 这是原生 direct 出站，不连接代理服务器；无需地址、端口或密码。
+# 广告仍由主配置中的 REJECT 规则拦截，本文件本身不携带过滤规则。
+# 不宣称此格式能作为 Shadowrocket 首页节点订阅导入。
+proxies:
+  - name: 广告屏蔽
+    type: direct
+    udp: true
+

@@ -2,6 +2,8 @@
 
 给 Shadowrocket、小火箭、Mihomo / Clash Meta、Clash Verge Rev 使用的广告过滤配置。已有代理服务可以继续使用；只想去广告时，也可以让普通连接全部直连。
 
+**已经在用代理商配置的手机，优先使用附加模块 / 规则，见[手机模块与真正直连入口](docs/mobile-addons.md)。** Shadowrocket 的[广告模块](shadowrocket/adblock.module)可叠加到原配置；Android Mihomo 的[直连节点订阅](clash/direct-node-provider.yaml)使用真正的 `direct` 出站。两者的节点导入方式不能混为一谈。
+
 **连接开关开启，不代表所有流量都会经过代理服务器。** 开关让流量进入客户端，由规则选择 `REJECT`（拦截）、`DIRECT`（直连）或已有代理。关键是使用**配置 / Rule 模式**，把广告拦截放在普通分流规则之前。
 
 ```text
@@ -19,7 +21,7 @@
 | 保留现在的代理分流，增加去广告 | [把三条规则插到当前配置最前面](shadowrocket/prepend-rules.conf) | Verge Rev 使用[扩展脚本](clash-verge/adblock.js)；其他客户端使用[合并片段](clash/adblock-snippet.yaml) |
 | 没有自己的分流规则，想先使用基础分流 | [局域网 / 中国 IP 直连，其余代理](shadowrocket/proxy-adblock.conf) | 使用自己的代理订阅，再叠加扩展脚本 / 合并片段 |
 
-你已经在用正常代理，建议先用第二行：广告被拒绝，其他请求继续按原规则运行。
+已有代理商配置时，Shadowrocket 手机优先使用上面的广告模块；桌面端和其他客户端可使用第二行。下面的完整配置属于独立使用方式。
 
 ## Shadowrocket：保留现有代理，添加去广告
 
@@ -46,7 +48,7 @@ https://raw.githubusercontent.com/Craigfu616/proxy-adblock-config/main/shadowroc
 
 在连接记录中检查普通请求的策略应为 `DIRECT`、广告应为 `REJECT`。手动测速、代理组自动测速、节点订阅更新属于另外的客户端活动，不能仅凭业务请求直连就保证这些活动也完全不产生节点流量。
 
-如果希望完全避免选中真实代理服务器，可在首页手动添加一个本地占位节点：类型 `Socks5`、地址 `127.0.0.1`、端口 `9`，不填用户名和密码，备注为「直连去广告占位」。它不是可用的代理服务，仅用于满足节点选择；启用这份直连配置后，普通请求不依赖它转发。若误切换到全局代理或启用含代理规则的配置，相应请求会失败。
+不要把 `127.0.0.1:9` 无效代理当作可以在原代理商配置中随时选择的直连节点。它只在所有普通请求已被这份独立配置设置为 `DIRECT` 时不会被使用，不能实现“保留原配置、仅换节点切换直连与境外代理”。真正直连入口的支持情况见[手机说明](docs/mobile-addons.md)。VPN 隧道开启时，`DIRECT` 也不保证通过所有 App 的 VPN 检测。
 
 DNS 参数含义参考 [Shadowrocket 使用手册](https://github.com/LOWERTOP/Shadowrocket/wiki/#隐式参数)。
 
